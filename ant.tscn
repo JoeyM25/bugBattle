@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvcdrnm15bh62"]
+
+[ext_resource type="Script" path="res://ant.gd" id="1_3onp7"]
+[ext_resource type="Texture2D" uid="uid://kpc1xerhije0" path="res://tilemap.png" id="2_f5i0b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcqgs"]
+atlas = ExtResource("2_f5i0b")
+region = Rect2(272, 153, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsjii"]
+atlas = ExtResource("2_f5i0b")
+region = Rect2(289, 153, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pnqf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcqgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsjii")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqw0x"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpovl"]
+radius = 6.0
+height = 16.0
+
+[node name="ant" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_3onp7")
+speed = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7pnqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tqw0x")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -3.14159
+target_position = Vector2(-16, 0)
+collision_mask = 2
+
+[node name="hurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+shape = SubResource("CapsuleShape2D_dpovl")
+debug_color = Color(0.886275, 0.329412, 0, 0.419608)
+
+[connection signal="body_entered" from="hurtBox" to="." method="_on_hurt_box_body_entered"]
