@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdbsb0grreeob"]
+[gd_scene load_steps=3 format=3 uid="uid://bdbsb0grreeob"]
 
 [ext_resource type="PackedScene" uid="uid://b4ty717v6eujg" path="res://tile_map.tscn" id="1_8khyt"]
 [ext_resource type="PackedScene" uid="uid://dwlofthjoig4j" path="res://player.tscn" id="2_jjfme"]
-[ext_resource type="PackedScene" uid="uid://cvcdrnm15bh62" path="res://ant.tscn" id="3_svodr"]
 
 [node name="testLevel" type="Node"]
 
@@ -12,5 +11,5 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 131072, 0, 131072, 0, 0
 [node name="player" parent="." instance=ExtResource("2_jjfme")]
 position = Vector2(74.5433, 28.5753)
 
-[node name="ant" parent="." instance=ExtResource("3_svodr")]
-position = Vector2(63, 55)
+[node name="EnemyTileMap" parent="." instance=ExtResource("1_8khyt")]
+layer_0/tile_data = PackedInt32Array(196615, 1, 65536, 458771, 1, 65536, 851975, 1, 65536, 524301, 1, 65536, 786449, 1, 65536, 262154, 1, 65536, 720908, 1, 65536)

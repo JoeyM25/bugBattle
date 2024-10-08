@@ -34,9 +34,11 @@ radius = 6.0
 height = 16.0
 
 [node name="ant" type="CharacterBody2D"]
+collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_3onp7")
 speed = 5
+direction = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -45,12 +47,17 @@ sprite_frames = SubResource("SpriteFrames_7pnqf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tqw0x")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-rotation = -3.14159
-target_position = Vector2(-16, 0)
+[node name="leftRight" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
+collision_mask = 2
+
+[node name="upDown" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 16)
 collision_mask = 2
 
 [node name="hurtBox" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
 shape = SubResource("CapsuleShape2D_dpovl")
